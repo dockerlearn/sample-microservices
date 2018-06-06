@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+---
+
+spring:
+  application:
+    name: sample-ms
+    
+
+
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+  
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}    
+  client:
+    should-unregister-on-shutdown: false       
+    
